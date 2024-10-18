@@ -16,7 +16,7 @@ namespace proyecto_final
         {
             InitializeComponent();
         }
-
+        //hola estoy comenzando
         private void Form1_Load(object sender, EventArgs e)
         {
 
