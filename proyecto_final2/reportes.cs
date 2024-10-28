@@ -49,6 +49,7 @@ namespace proyecto_final2
             }
             // Recargar la URL en el ChromiumWebBrowser
             webBrowser1.Navigate(folderPath + "/index.html");
+            //hoka
         }
 
 
