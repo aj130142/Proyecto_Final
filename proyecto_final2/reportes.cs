@@ -34,10 +34,6 @@ namespace proyecto_final2
         }
 
 
-        private void InitializeChromium()
-        {
-            
-        }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -54,23 +50,6 @@ namespace proyecto_final2
 
 
 
-        public void reportes_Load(object sender, EventArgs e)
-        {
-
-           
-
-        }
-
-        private void reportes_FormClosing(object sender, FormClosingEventArgs e)
-        {
- 
-        }   
-
-
-        private void reportes_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {

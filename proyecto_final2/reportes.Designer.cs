@@ -51,9 +51,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "reportes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.reportes_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.reportes_FormClosed);
-            this.Load += new System.EventHandler(this.reportes_Load);
             this.ResumeLayout(false);
 
         }
