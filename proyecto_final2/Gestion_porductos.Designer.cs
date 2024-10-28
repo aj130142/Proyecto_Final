@@ -232,6 +232,7 @@
             this.Controls.Add(this.txtNombre);
             this.Name = "Gestion_porductos";
             this.Text = "Gestionar productos";
+            this.Load += new System.EventHandler(this.Gestion_porductos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

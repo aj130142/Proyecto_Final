@@ -44,8 +44,7 @@ namespace proyecto_final2
                 Directory.CreateDirectory(folderPath);
             }
             // Recargar la URL en el ChromiumWebBrowser
-            webBrowser1.Navigate(folderPath + "/index.html");
-            //hoka
+            
         }
 
 
@@ -56,7 +55,6 @@ namespace proyecto_final2
             // Detener el Timer
             timer.Stop();
 
-            webBrowser1.Stop();
             
         }
     }

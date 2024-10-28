@@ -34,5 +34,10 @@ namespace proyecto_final2
             reportes ventana = new reportes();
             ventana.Show();
         }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

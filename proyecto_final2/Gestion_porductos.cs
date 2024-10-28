@@ -16,5 +16,10 @@ namespace proyecto_final2
         {
             InitializeComponent();
         }
+
+        private void Gestion_porductos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
