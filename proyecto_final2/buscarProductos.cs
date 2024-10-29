@@ -13,34 +13,53 @@ namespace proyecto_final2
     public partial class buscarProductos : Form
     {
         List<int> v = new List<int>();
-        int contador=0;
+        
         public buscarProductos()
         {
             InitializeComponent();
         }
 
-        private void btnFiltrar_Click(object sender, EventArgs e)
+        /*private void btnFiltrar_Click(object sender, EventArgs e)
         {
-
-            foreach (var index in listFiltros.CheckedIndices.Cast<int>())
+            try
             {
-                
-                v.Add(index);
-                
-                
+                foreach (var index in listFiltros.CheckedIndices.Cast<int>())
+                {
+
+                    v.Add(index);
+
+
+                }
+                MessageBox.Show("" + v[0] + " " + v[1]);
             }
-            MessageBox.Show(""+v[0]+" " + v[1]);
+            catch
+            {
+
+            }
             
-        }
+            
+        }*/
 
         private void buscarProductos_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'ventasDataSet1.tbProducto' Puede moverla o quitarla según sea necesario.
+            this.tbProductoTableAdapter.Fill(this.ventasDataSet1.tbProducto);
 
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btStocklow_Click(object sender, EventArgs e)
+        {
+
+            this.tbProductoTableAdapter.FillByStockBajo(this.ventasDataSet1.tbProducto);
+
+            dataGridView1.DataSource = this.ventasDataSet1.tbProducto;
+
+            dataGridView1.Refresh();
         }
     }
 }
