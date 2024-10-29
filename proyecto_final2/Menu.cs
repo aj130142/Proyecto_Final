@@ -39,5 +39,11 @@ namespace proyecto_final2
         {
 
         }
+
+        private void gestonarStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestionarStock gestionarStock = new GestionarStock();
+            gestionarStock.Show();
+        }
     }
 }

@@ -2705,7 +2705,7 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT * \nFROM tbProducto \nWHERE Codigo = @Codigo;";
+            this._commandCollection[3].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Codigo = @Codigo;";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Codigo", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
