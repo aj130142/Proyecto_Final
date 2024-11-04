@@ -7,14 +7,14 @@
 <DiagramLayout xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ex:showrelationlabel="False" ViewPortX="0" ViewPortY="0" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:tbMovimientosStock" ZOrder="5" X="54" Y="216" Height="319" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="168" />
-    <Shape ID="DesignTable:tbProducto" ZOrder="1" X="436" Y="70" Height="342" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="191" />
+    <Shape ID="DesignTable:tbProducto" ZOrder="1" X="435" Y="70" Height="457" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="191" />
     <Shape ID="DesignTable:tbVentas" ZOrder="2" X="993" Y="209" Height="250" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="168" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:tbProducto_tbVentas" ZOrder="4" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>736</X>
+          <X>735</X>
           <Y>334</Y>
         </Point>
         <Point>
@@ -26,16 +26,16 @@
     <Connector ID="DesignRelation:tbProducto_tbMovimientosStock" ZOrder="3" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>459</X>
-          <Y>412</Y>
+          <X>458</X>
+          <Y>527</Y>
         </Point>
         <Point>
-          <X>459</X>
-          <Y>475</Y>
+          <X>458</X>
+          <Y>535</Y>
         </Point>
         <Point>
           <X>354</X>
-          <Y>475</Y>
+          <Y>535</Y>
         </Point>
       </RoutePoints>
     </Connector>

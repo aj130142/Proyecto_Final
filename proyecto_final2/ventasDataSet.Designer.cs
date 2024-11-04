@@ -2697,8 +2697,8 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion\r\nFRO" +
-                "M     tbProducto\r\nWHERE Nombre LIKE \'%\' + @idproduct + \'%\' \n   OR Categoria LIKE" +
-                " \'%\' + @idproduct + \'%\' or Codigo LIKE \'%\' + @idproduct + \'%\';\n";
+                "M     tbProducto\r\nWHERE Nombre LIKE \'%\' + @idproduct + \'%\' \r\n   OR Categoria LIK" +
+                "E \'%\' + @idproduct + \'%\' or Codigo LIKE \'%\' + @idproduct + \'%\';\r\n";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idproduct", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -2736,8 +2736,9 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[9].Connection = this.Connection;
-            this._commandCollection[9].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Cantidad < 10;";
+            this._commandCollection[9].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Cantidad <= @cantidad;";
             this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[10].Connection = this.Connection;
             this._commandCollection[10].CommandText = "INSERT INTO [dbo].[tbProducto] ([Codigo], [Nombre], [Cantidad], [Precio], [Catego" +
@@ -2990,8 +2991,9 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByStockBajo(ventasDataSet.tbProductoDataTable dataTable) {
+        public virtual int FillByStockBajo(ventasDataSet.tbProductoDataTable dataTable, int cantidad) {
             this.Adapter.SelectCommand = this.CommandCollection[9];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(cantidad));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -3003,8 +3005,9 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual ventasDataSet.tbProductoDataTable GetDataByStockBajo() {
+        public virtual ventasDataSet.tbProductoDataTable GetDataByStockBajo(int cantidad) {
             this.Adapter.SelectCommand = this.CommandCollection[9];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(cantidad));
             ventasDataSet.tbProductoDataTable dataTable = new ventasDataSet.tbProductoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
