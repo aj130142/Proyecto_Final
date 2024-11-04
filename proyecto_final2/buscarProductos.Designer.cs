@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.IdCheck = new System.Windows.Forms.CheckBox();
             this.CantidadCheck = new System.Windows.Forms.CheckBox();
             this.PrecioCheck = new System.Windows.Forms.CheckBox();
@@ -49,13 +48,13 @@
             this.timeAntiguedad2 = new System.Windows.Forms.DateTimePicker();
             this.txtFechaI = new System.Windows.Forms.Label();
             this.txtFechaF = new System.Windows.Forms.Label();
+            this.timeventasF = new System.Windows.Forms.DateTimePicker();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ventasDataSet1 = new proyecto_final2.ventasDataSet();
             this.tbProductoTableAdapter = new proyecto_final2.ventasDataSetTableAdapters.tbProductoTableAdapter();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.ventasDataSet = new proyecto_final2.ventasDataSet();
             this.tbMovimientosStockTableAdapter = new proyecto_final2.ventasDataSetTableAdapters.tbMovimientosStockTableAdapter();
-            this.timeventasF = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventasDataSet1)).BeginInit();
@@ -81,19 +80,6 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Nombre",
-            "Cantidad"});
-            this.comboBox1.Location = new System.Drawing.Point(1213, 48);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 2;
             // 
             // IdCheck
             // 
@@ -227,7 +213,7 @@
             this.timeventas.Name = "timeventas";
             this.timeventas.Size = new System.Drawing.Size(200, 22);
             this.timeventas.TabIndex = 18;
-            this.timeventas.ValueChanged += new System.EventHandler(this.timeReciente_ValueChanged);
+            this.timeventas.ValueChanged += new System.EventHandler(this.timeventas_ValueChanged);
             // 
             // timeAntiguedad2
             // 
@@ -257,6 +243,14 @@
             this.txtFechaF.TabIndex = 21;
             this.txtFechaF.Text = "Fecha Final";
             // 
+            // timeventasF
+            // 
+            this.timeventasF.Location = new System.Drawing.Point(921, 50);
+            this.timeventasF.Name = "timeventasF";
+            this.timeventasF.Size = new System.Drawing.Size(200, 22);
+            this.timeventasF.TabIndex = 22;
+            this.timeventasF.ValueChanged += new System.EventHandler(this.timeventasF_ValueChanged);
+            // 
             // bindingSource1
             // 
             this.bindingSource1.DataMember = "tbProducto";
@@ -285,13 +279,6 @@
             // 
             this.tbMovimientosStockTableAdapter.ClearBeforeFill = true;
             // 
-            // timeventasF
-            // 
-            this.timeventasF.Location = new System.Drawing.Point(921, 50);
-            this.timeventasF.Name = "timeventasF";
-            this.timeventasF.Size = new System.Drawing.Size(200, 22);
-            this.timeventasF.TabIndex = 22;
-            // 
             // buscarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -315,7 +302,6 @@
             this.Controls.Add(this.PrecioCheck);
             this.Controls.Add(this.CantidadCheck);
             this.Controls.Add(this.IdCheck);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "buscarProductos";
@@ -338,7 +324,6 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private ventasDataSetTableAdapters.tbProductoTableAdapter tbProductoTableAdapter;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckBox IdCheck;
         private System.Windows.Forms.CheckBox CantidadCheck;
         private System.Windows.Forms.CheckBox PrecioCheck;

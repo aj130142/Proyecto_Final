@@ -148,6 +148,7 @@ namespace proyecto_final2
             if (recienteCheck.Checked==false)
             {
                 timeventas.Visible=false;
+                timeventasF.Visible=false;
             }
         }
 
@@ -196,6 +197,7 @@ namespace proyecto_final2
             if (recient) 
             {
                 timeventas.Visible = true;
+                timeventasF.Visible = true;
             }
             if (stockbajo)
             {
@@ -292,11 +294,6 @@ namespace proyecto_final2
             dataGridView1.DataSource = tbMovimientosStockTableAdapter.GetDataByMovFecha(fechaI,fechaF);
         }
 
-        private void timeReciente_ValueChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show("hola");
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -325,6 +322,47 @@ namespace proyecto_final2
         private void recienteCheck_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void timeventas_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaSeleccionadaI = timeventas.Value;
+            DateTime fechaSeleccionadaF = timeventasF.Value;
+            int diaI = fechaSeleccionadaI.Day;
+            int mesI = fechaSeleccionadaI.Month;
+            int añoI = fechaSeleccionadaI.Year;
+            string fechaI = Convert.ToString(añoI) + "-" + Convert.ToString(mesI) + "-" + Convert.ToString(diaI);
+            DateTime fechaDateI = DateTime.Parse(fechaI);
+
+            int diaF = fechaSeleccionadaF.Day;
+            int mesF = fechaSeleccionadaF.Month;
+            int añoF = fechaSeleccionadaF.Year;
+            string fechaF = Convert.ToString(añoF) + "-" + Convert.ToString(mesF) + "-" + Convert.ToString(diaF);
+            DateTime fechaDateF = DateTime.Parse(fechaF);
+
+
+            dataGridView1.DataSource = tbMovimientosStockTableAdapter.GetDataMovFechaSalida(fechaI, fechaF);
+        
+    }
+
+        private void timeventasF_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaSeleccionadaI = timeventas.Value;
+            DateTime fechaSeleccionadaF = timeventasF.Value;
+            int diaI = fechaSeleccionadaI.Day;
+            int mesI = fechaSeleccionadaI.Month;
+            int añoI = fechaSeleccionadaI.Year;
+            string fechaI = Convert.ToString(añoI) + "-" + Convert.ToString(mesI) + "-" + Convert.ToString(diaI);
+            DateTime fechaDateI = DateTime.Parse(fechaI);
+
+            int diaF = fechaSeleccionadaF.Day;
+            int mesF = fechaSeleccionadaF.Month;
+            int añoF = fechaSeleccionadaF.Year;
+            string fechaF = Convert.ToString(añoF) + "-" + Convert.ToString(mesF) + "-" + Convert.ToString(diaF);
+            DateTime fechaDateF = DateTime.Parse(fechaF);
+
+
+            dataGridView1.DataSource = tbMovimientosStockTableAdapter.GetDataMovFechaSalida(fechaI, fechaF);
         }
     }
 }
