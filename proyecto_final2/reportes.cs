@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
+
 
 
 namespace proyecto_final2
@@ -56,6 +59,34 @@ namespace proyecto_final2
             timer.Stop();
 
             
+        }
+
+        private void reportes_Load(object sender, EventArgs e)
+        {
+            //reportViewer1.LocalReport.ReportPath = @"C:\Users\chino\source\repos\proyecto_final2\proyecto_final2\reportes\Report1.rdlc";
+
+            // TODO: esta línea de código carga datos en la tabla 'ventasDataSet1.tbProducto' Puede moverla o quitarla según sea necesario.
+            
+            try
+            {
+                this.tbProductoTableAdapter.Fill(this.ventasDataSet1.tbProducto);
+                this.tbVentasTableAdapter.Fill(this.ventasDataSet1.tbVentas);
+
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", (DataTable)ventasDataSet1.tbVentas));
+
+                reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+
+
+
+            this.reportViewer1.RefreshReport();
+            
+            this.reportViewer1.RefreshReport();
         }
     }
 }
