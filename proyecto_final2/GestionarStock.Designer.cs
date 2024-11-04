@@ -36,11 +36,11 @@
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.cBoxTipoMov = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cBoxIdProducto = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
             this.idMovimientoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +49,6 @@
             this.observacionesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbMovimientosStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ventasDataSet = new proyecto_final2.ventasDataSet();
-            this.label5 = new System.Windows.Forms.Label();
             this.tbMovimientosStockTableAdapter = new proyecto_final2.ventasDataSetTableAdapters.tbMovimientosStockTableAdapter();
             this.tbProductoTableAdapter1 = new proyecto_final2.ventasDataSetTableAdapters.tbProductoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -120,15 +119,6 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
             this.dateTimePicker1.TabIndex = 7;
             // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Location = new System.Drawing.Point(26, 156);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(128, 32);
-            this.btnActualizar.TabIndex = 10;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            // 
             // cBoxTipoMov
             // 
             this.cBoxTipoMov.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -181,6 +171,16 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(858, 220);
             this.dataGridView1.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(495, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 25);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Fecha";
             // 
             // idMovimientoDataGridViewTextBoxColumn
             // 
@@ -241,16 +241,6 @@
             this.ventasDataSet.DataSetName = "ventasDataSet";
             this.ventasDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(495, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 25);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Fecha";
-            // 
             // tbMovimientosStockTableAdapter
             // 
             this.tbMovimientosStockTableAdapter.ClearBeforeFill = true;
@@ -269,7 +259,6 @@
             this.Controls.Add(this.cBoxIdProducto);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cBoxTipoMov);
-            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtObservaciones);
             this.Controls.Add(this.label3);
@@ -297,7 +286,6 @@
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.ComboBox cBoxTipoMov;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cBoxIdProducto;
