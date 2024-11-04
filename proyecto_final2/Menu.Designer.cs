@@ -33,6 +33,7 @@
             this.buscarProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graficasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestonarStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,8 @@
             this.gestionDeProductosToolStripMenuItem,
             this.buscarProductosToolStripMenuItem,
             this.reportesToolStripMenuItem,
-            this.graficasToolStripMenuItem});
+            this.graficasToolStripMenuItem,
+            this.gestonarStockToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
@@ -77,6 +79,13 @@
             this.graficasToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
             this.graficasToolStripMenuItem.Text = "Graficas";
             // 
+            // gestonarStockToolStripMenuItem
+            // 
+            this.gestonarStockToolStripMenuItem.Name = "gestonarStockToolStripMenuItem";
+            this.gestonarStockToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.gestonarStockToolStripMenuItem.Text = "Gestonar Stock";
+            this.gestonarStockToolStripMenuItem.Click += new System.EventHandler(this.gestonarStockToolStripMenuItem_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -101,6 +110,7 @@
         private System.Windows.Forms.ToolStripMenuItem buscarProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem graficasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestonarStockToolStripMenuItem;
     }
 }
 
