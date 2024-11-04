@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace proyecto_final2
 {
-    public partial class Gestion_porductos : Form
+    public partial class Gestion_productos : Form
     {
-        public Gestion_porductos()
+        public Gestion_productos()
         {
             InitializeComponent();
         }
@@ -31,7 +31,7 @@ namespace proyecto_final2
             //int mes = dateTimePicker1.Value.Month;
             //int dia = dateTimePicker1.Value.Day;
             //string fechas = ""+ano+"-"+mes+"-"+"-"+dia ;
-            this.tbProductoTableAdapter.InsertarProducto(txtCodigo.Text,txtNombre.Text,Convert.ToInt32(txtCantida.Text),Convert.ToDecimal(txtPrecio.Text),txtCategoria.Text,txtDescripcion.Text);
+            this.tbProductoTableAdapter.InsertarProducto(txtCodigo.Text,txtNombre.Text,Convert.ToDecimal(txtPrecio.Text),txtCategoria.Text,txtDescripcion.Text,Convert.ToInt32(txtCantida.Text));
         }
 
         private void btActualizar_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace proyecto_final2
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            this.tbProductoTableAdapter.EliminarProducto(Convert.ToInt32(txtdeleteId.Text),txtdeleteCodigo.Text,txtdeleteNombre.Text);
+            this.tbProductoTableAdapter.EliminarProducto(txtdeleteCodigo.Text,txtdeleteNombre.Text);
         }
 
         private void label13_Click(object sender, EventArgs e)
@@ -60,6 +60,47 @@ namespace proyecto_final2
         }
 
         private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void insertaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActulizarPanel.Visible = false;
+            eliminiPanel.Visible = false;
+            insertarPanel.Visible = true;
+        }
+
+        private void actualizarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActulizarPanel.Visible = true;
+            eliminiPanel.Visible = false;
+            insertarPanel.Visible = false;
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActulizarPanel.Visible = false;
+            eliminiPanel.Visible = true;
+            insertarPanel.Visible = false;
+        }
+
+        private void eliminiPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }

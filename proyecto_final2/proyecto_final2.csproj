@@ -97,11 +97,11 @@
     <Compile Include="GestionarStock.Designer.cs">
       <DependentUpon>GestionarStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gestion_porductos.cs">
+    <Compile Include="Gestion_productos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gestion_porductos.Designer.cs">
-      <DependentUpon>Gestion_porductos.cs</DependentUpon>
+    <Compile Include="Gestion_productos.Designer.cs">
+      <DependentUpon>Gestion_productos.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -131,8 +131,8 @@
     <EmbeddedResource Include="GestionarStock.resx">
       <DependentUpon>GestionarStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gestion_porductos.resx">
-      <DependentUpon>Gestion_porductos.cs</DependentUpon>
+    <EmbeddedResource Include="Gestion_productos.resx">
+      <DependentUpon>Gestion_productos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
