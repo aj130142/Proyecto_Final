@@ -2029,45 +2029,45 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Año", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT * \r\nFROM tbMovimientosStock \r\nWHERE TipoMovimiento = \'Entrada\';";
+            this._commandCollection[2].CommandText = "SELECT * \nFROM tbMovimientosStock \nWHERE TipoMovimiento = \'Entrada\';";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Obs" +
-                "ervaciones\r\nFROM     tbMovimientosStock\r\nWHERE  (FechaMovimiento BETWEEN @FechaI" +
-                "nicio AND @FechaFin) AND (TipoMovimiento = \'Entrada\');  \r\n";
+                "ervaciones\nFROM     tbMovimientosStock\nWHERE  (FechaMovimiento BETWEEN @FechaIni" +
+                "cio AND @FechaFin) AND (TipoMovimiento = \'Entrada\');  \n";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaInicio", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
             this._commandCollection[4].CommandText = "SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Obs" +
-                "ervaciones\r\nFROM     tbMovimientosStock\r\nWHERE  (FechaMovimiento BETWEEN @FechaI" +
-                "nicio AND @FechaFin) AND (TipoMovimiento = \'Salida\');  \r\n";
+                "ervaciones\nFROM     tbMovimientosStock\nWHERE  (FechaMovimiento BETWEEN @FechaIni" +
+                "cio AND @FechaFin) AND (TipoMovimiento = \'Salida\');  \n";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaInicio", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT TOP 10 * \r\nFROM tbMovimientosStock \r\nORDER BY FechaMovimiento DESC;";
+            this._commandCollection[5].CommandText = "SELECT TOP 10 * \nFROM tbMovimientosStock \nORDER BY FechaMovimiento DESC;";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT * \r\nFROM tbMovimientosStock \r\nWHERE TipoMovimiento = \'Salida\';";
+            this._commandCollection[6].CommandText = "SELECT * \nFROM tbMovimientosStock \nWHERE TipoMovimiento = \'Salida\';";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "SELECT * \r\nFROM tbMovimientosStock \r\nWHERE ID_Producto = @Producto;";
+            this._commandCollection[7].CommandText = "SELECT * \nFROM tbMovimientosStock \nWHERE ID_Producto = @Producto;";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Producto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = "SELECT m.*\r\nFROM tbMovimientosStock m\r\nJOIN tbProducto p ON m.Id_Producto = p.Id_" +
-                "Producto\r\nWHERE p.Cantidad < 10;";
+            this._commandCollection[8].CommandText = "SELECT m.*\nFROM tbMovimientosStock m\nJOIN tbProducto p ON m.Id_Producto = p.Id_Pr" +
+                "oducto\nWHERE p.Cantidad < 10;";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[9].Connection = this.Connection;
-            this._commandCollection[9].CommandText = "SELECT * \r\nFROM tbMovimientosStock;";
+            this._commandCollection[9].CommandText = "SELECT * \nFROM tbMovimientosStock;";
             this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[10] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[10].Connection = this.Connection;
@@ -2786,54 +2786,53 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion\r\nFRO" +
-                "M     tbProducto\r\nWHERE Nombre LIKE \'%\' + @idproduct + \'%\' \r\n   OR Categoria LIK" +
-                "E \'%\' + @idproduct + \'%\' or Codigo LIKE \'%\' + @idproduct + \'%\';\r\n";
+            this._commandCollection[2].CommandText = "SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion\nFROM" +
+                "     tbProducto\nWHERE Nombre LIKE \'%\' + @idproduct + \'%\' \n   OR Categoria LIKE \'" +
+                "%\' + @idproduct + \'%\' or Codigo LIKE \'%\' + @idproduct + \'%\';\n";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idproduct", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion\r\nFRO" +
-                "M     tbProducto\r\nWHERE  (Precio LIKE @precio)";
+            this._commandCollection[3].CommandText = "SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion\nFROM" +
+                "     tbProducto\nWHERE  (Precio LIKE @precio)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@precio", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 10, 2, "Precio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion\r\nFRO" +
-                "M     tbProducto\r\nWHERE     (Cantidad like @cantidad)";
+            this._commandCollection[4].CommandText = "SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion\nFROM" +
+                "     tbProducto\nWHERE     (Cantidad like @cantidad)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion\r\nFRO" +
-                "M     tbProducto\r\nWHERE  (Id_Producto LIKE @Id)";
+            this._commandCollection[5].CommandText = "SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion\nFROM" +
+                "     tbProducto\nWHERE  (Id_Producto LIKE @Id)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT Categoria, COUNT(*) AS TotalProductos\r\nFROM tbProducto\r\nGROUP BY Categoria" +
-                ";";
+            this._commandCollection[6].CommandText = "SELECT Categoria, COUNT(*) AS TotalProductos\nFROM tbProducto\nGROUP BY Categoria;";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Codigo like \'%\' + @idproduct + \'%\';";
+            this._commandCollection[7].CommandText = "SELECT * \nFROM tbProducto \nWHERE Codigo like \'%\' + @idproduct + \'%\';";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idproduct", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Nombre LIKE @Nombre";
+            this._commandCollection[8].CommandText = "SELECT * \nFROM tbProducto \nWHERE Nombre LIKE @Nombre";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[9].Connection = this.Connection;
-            this._commandCollection[9].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Cantidad <= @cantidad;";
+            this._commandCollection[9].CommandText = "SELECT * \nFROM tbProducto \nWHERE Cantidad <= @cantidad;";
             this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[10].Connection = this.Connection;
-            this._commandCollection[10].CommandText = "INSERT INTO tbProducto\r\n                  (Codigo, Nombre, Precio, Categoria, Des" +
-                "cripcion, Cantidad)\r\nVALUES (@Codigo,@Nombre,@Precio,@Categoria,@Descripcion,@ca" +
-                "ntidad)";
+            this._commandCollection[10].CommandText = "INSERT INTO tbProducto\n                  (Codigo, Nombre, Precio, Categoria, Desc" +
+                "ripcion, Cantidad)\nVALUES (@Codigo,@Nombre,@Precio,@Categoria,@Descripcion,@cant" +
+                "idad)";
             this._commandCollection[10].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Codigo", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3539,9 +3538,9 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[tbVentas] ([id_Producto], [Fecha], [Ventas], [Cantidad], [Tota" +
-                "l]) VALUES (@id_Producto, @Fecha, @Ventas, @Cantidad, @Total);\r\nSELECT Id_Venta," +
-                " id_Producto, Fecha, Ventas, Cantidad, Total FROM tbVentas WHERE (Id_Venta = SCO" +
-                "PE_IDENTITY())";
+                "l]) VALUES (@id_Producto, @Fecha, @Ventas, @Cantidad, @Total);\nSELECT Id_Venta, " +
+                "id_Producto, Fecha, Ventas, Cantidad, Total FROM tbVentas WHERE (Id_Venta = SCOP" +
+                "E_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_Producto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
