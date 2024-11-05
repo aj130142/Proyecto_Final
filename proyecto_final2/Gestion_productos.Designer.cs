@@ -65,19 +65,21 @@
             this.txtactuCategoria = new System.Windows.Forms.TextBox();
             this.txtactuPrecio = new System.Windows.Forms.TextBox();
             this.eliminiPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.insertarPanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.insertaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.ventasDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.ActulizarPanel.SuspendLayout();
             this.eliminiPanel.SuspendLayout();
             this.insertarPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCodigo
@@ -119,7 +121,6 @@
             this.label1.Size = new System.Drawing.Size(51, 16);
             this.label1.TabIndex = 6;
             this.label1.Text = "Codigo";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -175,6 +176,7 @@
             this.txtactuCodigo.Name = "txtactuCodigo";
             this.txtactuCodigo.Size = new System.Drawing.Size(86, 22);
             this.txtactuCodigo.TabIndex = 17;
+            this.txtactuCodigo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtactuCodigo_KeyUp);
             // 
             // btActualizar
             // 
@@ -267,6 +269,7 @@
             this.txtdeleteCodigo.Name = "txtdeleteCodigo";
             this.txtdeleteCodigo.Size = new System.Drawing.Size(234, 22);
             this.txtdeleteCodigo.TabIndex = 29;
+            this.txtdeleteCodigo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtdeleteCodigo_KeyUp);
             // 
             // ventasDataSet1
             // 
@@ -306,7 +309,6 @@
             this.label14.Size = new System.Drawing.Size(203, 16);
             this.label14.TabIndex = 31;
             this.label14.Text = "Coloque coma, no punto decimal";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // ActulizarPanel
             // 
@@ -322,7 +324,7 @@
             this.ActulizarPanel.Controls.Add(this.txtActuNombre);
             this.ActulizarPanel.Controls.Add(this.label2);
             this.ActulizarPanel.Controls.Add(this.label8);
-            this.ActulizarPanel.Location = new System.Drawing.Point(12, 70);
+            this.ActulizarPanel.Location = new System.Drawing.Point(12, 41);
             this.ActulizarPanel.Name = "ActulizarPanel";
             this.ActulizarPanel.Size = new System.Drawing.Size(359, 346);
             this.ActulizarPanel.TabIndex = 32;
@@ -384,12 +386,21 @@
             this.eliminiPanel.Controls.Add(this.txtdeleteCodigo);
             this.eliminiPanel.Controls.Add(this.txtdeleteNombre);
             this.eliminiPanel.Controls.Add(this.label12);
-            this.eliminiPanel.Location = new System.Drawing.Point(12, 134);
+            this.eliminiPanel.Location = new System.Drawing.Point(12, 124);
             this.eliminiPanel.Name = "eliminiPanel";
             this.eliminiPanel.Size = new System.Drawing.Size(415, 188);
             this.eliminiPanel.TabIndex = 33;
             this.eliminiPanel.Visible = false;
             this.eliminiPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.eliminiPanel_Paint);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(129, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(111, 16);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Eliminar producto";
             // 
             // insertarPanel
             // 
@@ -414,6 +425,16 @@
             this.insertarPanel.TabIndex = 34;
             this.insertarPanel.Visible = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(128, 16);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Actualizar productos";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -423,7 +444,7 @@
             this.eliminarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(446, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1281, 28);
             this.menuStrip1.TabIndex = 34;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -448,30 +469,23 @@
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
-            // label6
+            // dataGridView1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(129, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 16);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Eliminar producto";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(22, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 16);
-            this.label7.TabIndex = 32;
-            this.label7.Text = "Actualizar productos";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(533, 13);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(736, 419);
+            this.dataGridView1.TabIndex = 35;
             // 
             // Gestion_productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 444);
+            this.ClientSize = new System.Drawing.Size(1281, 444);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.insertarPanel);
             this.Controls.Add(this.eliminiPanel);
             this.Controls.Add(this.ActulizarPanel);
@@ -490,6 +504,7 @@
             this.insertarPanel.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -540,5 +555,6 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

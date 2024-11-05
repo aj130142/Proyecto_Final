@@ -2782,9 +2782,9 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Codigo = @Codigo;";
+            this._commandCollection[7].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Codigo like \'%\' + @idproduct + \'%\';";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Codigo", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idproduct", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[8].Connection = this.Connection;
             this._commandCollection[8].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Nombre LIKE @Nombre";
@@ -2975,13 +2975,13 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByCodigo(ventasDataSet.tbProductoDataTable dataTable, string Codigo) {
+        public virtual int FillByCodigo(ventasDataSet.tbProductoDataTable dataTable, string idproduct) {
             this.Adapter.SelectCommand = this.CommandCollection[7];
-            if ((Codigo == null)) {
-                throw new global::System.ArgumentNullException("Codigo");
+            if ((idproduct == null)) {
+                throw new global::System.ArgumentNullException("idproduct");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Codigo));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(idproduct));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2994,13 +2994,13 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual ventasDataSet.tbProductoDataTable GetDataByCodigo(string Codigo) {
+        public virtual ventasDataSet.tbProductoDataTable GetDataByCodigo(string idproduct) {
             this.Adapter.SelectCommand = this.CommandCollection[7];
-            if ((Codigo == null)) {
-                throw new global::System.ArgumentNullException("Codigo");
+            if ((idproduct == null)) {
+                throw new global::System.ArgumentNullException("idproduct");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Codigo));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(idproduct));
             }
             ventasDataSet.tbProductoDataTable dataTable = new ventasDataSet.tbProductoDataTable();
             this.Adapter.Fill(dataTable);

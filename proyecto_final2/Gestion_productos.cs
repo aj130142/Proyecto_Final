@@ -27,16 +27,26 @@ namespace proyecto_final2
         private void btnAceptar_Click(object sender, EventArgs e)
         {
 
-            //int ano = dateTimePicker1.Value.Year;
-            //int mes = dateTimePicker1.Value.Month;
-            //int dia = dateTimePicker1.Value.Day;
-            //string fechas = ""+ano+"-"+mes+"-"+"-"+dia ;
+            
             this.tbProductoTableAdapter.InsertarProducto(txtCodigo.Text,txtNombre.Text,Convert.ToDecimal(txtPrecio.Text),txtCategoria.Text,txtDescripcion.Text,Convert.ToInt32(txtCantida.Text));
+            txtPrecio.Clear();
+            txtCodigo.Clear();
+            txtCategoria.Clear();
+            txtCantida.Clear();
+            txtDescripcion.Clear();
+            txtNombre.Clear();
         }
 
         private void btActualizar_Click(object sender, EventArgs e)
         {
 
+
+
+            txtactuCategoria.Clear();
+            txtactuDescrip.Clear();
+            txtactuCodigo.Clear();
+            txtActuNombre.Clear();
+            txtactuPrecio.Clear();
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -52,6 +62,9 @@ namespace proyecto_final2
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             this.tbProductoTableAdapter.EliminarProducto(txtdeleteCodigo.Text,txtdeleteNombre.Text);
+            txtdeleteCodigo.Clear();
+            txtdeleteNombre.Clear();
+            
         }
 
         private void label13_Click(object sender, EventArgs e)
@@ -60,16 +73,6 @@ namespace proyecto_final2
         }
 
         private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
         {
 
         }
@@ -86,6 +89,7 @@ namespace proyecto_final2
             ActulizarPanel.Visible = true;
             eliminiPanel.Visible = false;
             insertarPanel.Visible = false;
+
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,6 +107,16 @@ namespace proyecto_final2
         private void label7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtdeleteCodigo_KeyUp(object sender, KeyEventArgs e)
+        {
+            dataGridView1.DataSource = tbProductoTableAdapter.GetDataByCodigo((txtdeleteCodigo.Text));
+        }
+
+        private void txtactuCodigo_KeyUp(object sender, KeyEventArgs e)
+        {
+            dataGridView1.DataSource = tbProductoTableAdapter.GetDataByCodigo((txtactuCodigo.Text));
         }
     }
 }

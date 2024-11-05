@@ -103,6 +103,12 @@
     <Compile Include="Gestion_productos.Designer.cs">
       <DependentUpon>Gestion_productos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Graficas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graficas.Designer.cs">
+      <DependentUpon>Graficas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
