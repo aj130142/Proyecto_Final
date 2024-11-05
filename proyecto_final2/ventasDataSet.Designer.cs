@@ -2013,7 +2013,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[9];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[10];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Obs" +
@@ -2025,44 +2025,53 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT * \r\nFROM tbMovimientosStock \r\nWHERE FechaMovimiento BETWEEN @FechaInicio A" +
-                "ND @FechaFin;";
+            this._commandCollection[2].CommandText = "SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Obs" +
+                "ervaciones\r\nFROM     tbMovimientosStock\r\nWHERE  (FechaMovimiento BETWEEN @FechaI" +
+                "nicio AND @FechaFin) AND (TipoMovimiento = \'Entrada\');  \r\n";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaInicio", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT TOP 10 * \r\nFROM tbMovimientosStock \r\nORDER BY FechaMovimiento DESC;";
+            this._commandCollection[3].CommandText = "SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Obs" +
+                "ervaciones\r\nFROM     tbMovimientosStock\r\nWHERE  (FechaMovimiento BETWEEN @FechaI" +
+                "nicio AND @FechaFin) AND (TipoMovimiento = \'Salida\');  \r\n";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaInicio", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT * \r\nFROM tbMovimientosStock \r\nWHERE TipoMovimiento = \'Salida\';";
+            this._commandCollection[4].CommandText = "SELECT TOP 10 * \r\nFROM tbMovimientosStock \r\nORDER BY FechaMovimiento DESC;";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT * \r\nFROM tbMovimientosStock \r\nWHERE ID_Producto = @Producto;";
+            this._commandCollection[5].CommandText = "SELECT * \r\nFROM tbMovimientosStock \r\nWHERE TipoMovimiento = \'Salida\';";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Producto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT m.*\r\nFROM tbMovimientosStock m\r\nJOIN tbProducto p ON m.Id_Producto = p.Id_" +
-                "Producto\r\nWHERE p.Cantidad < 10;";
+            this._commandCollection[6].CommandText = "SELECT * \r\nFROM tbMovimientosStock \r\nWHERE ID_Producto = @Producto;";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Producto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "SELECT * \r\nFROM tbMovimientosStock;";
+            this._commandCollection[7].CommandText = "SELECT m.*\r\nFROM tbMovimientosStock m\r\nJOIN tbProducto p ON m.Id_Producto = p.Id_" +
+                "Producto\r\nWHERE p.Cantidad < 10;";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = "INSERT INTO [dbo].[tbMovimientosStock] ([Id_Producto], [Cantidad], [TipoMovimient" +
+            this._commandCollection[8].CommandText = "SELECT * \r\nFROM tbMovimientosStock;";
+            this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[9].Connection = this.Connection;
+            this._commandCollection[9].CommandText = "INSERT INTO [dbo].[tbMovimientosStock] ([Id_Producto], [Cantidad], [TipoMovimient" +
                 "o], [FechaMovimiento], [Observaciones]) VALUES (@Id_Producto, @Cantidad, @TipoMo" +
                 "vimiento, @FechaMovimiento, @Observaciones);";
-            this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_Producto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TipoMovimiento", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "TipoMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaMovimiento", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Observaciones", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "Observaciones", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_Producto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TipoMovimiento", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "TipoMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaMovimiento", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "FechaMovimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Observaciones", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "Observaciones", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2165,8 +2174,56 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByMovRecientes(ventasDataSet.tbMovimientosStockDataTable dataTable) {
+        public virtual int FillByMovFechaSalida(ventasDataSet.tbMovimientosStockDataTable dataTable, string FechaInicio, string FechaFin) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((FechaInicio == null)) {
+                throw new global::System.ArgumentNullException("FechaInicio");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(FechaInicio));
+            }
+            if ((FechaFin == null)) {
+                throw new global::System.ArgumentNullException("FechaFin");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(FechaFin));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ventasDataSet.tbMovimientosStockDataTable GetDataMovFechaSalida(string FechaInicio, string FechaFin) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((FechaInicio == null)) {
+                throw new global::System.ArgumentNullException("FechaInicio");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(FechaInicio));
+            }
+            if ((FechaFin == null)) {
+                throw new global::System.ArgumentNullException("FechaFin");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(FechaFin));
+            }
+            ventasDataSet.tbMovimientosStockDataTable dataTable = new ventasDataSet.tbMovimientosStockDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByMovRecientes(ventasDataSet.tbMovimientosStockDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2179,7 +2236,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual ventasDataSet.tbMovimientosStockDataTable GetDataByMovRecientes() {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             ventasDataSet.tbMovimientosStockDataTable dataTable = new ventasDataSet.tbMovimientosStockDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -2190,7 +2247,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByMovSalida(ventasDataSet.tbMovimientosStockDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2203,7 +2260,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual ventasDataSet.tbMovimientosStockDataTable GetDataByMovSalida() {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             ventasDataSet.tbMovimientosStockDataTable dataTable = new ventasDataSet.tbMovimientosStockDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -2214,7 +2271,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByMovXProducto(ventasDataSet.tbMovimientosStockDataTable dataTable, int Producto) {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand = this.CommandCollection[6];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Producto));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2228,7 +2285,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual ventasDataSet.tbMovimientosStockDataTable GetDataByMovXProducto(int Producto) {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand = this.CommandCollection[6];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Producto));
             ventasDataSet.tbMovimientosStockDataTable dataTable = new ventasDataSet.tbMovimientosStockDataTable();
             this.Adapter.Fill(dataTable);
@@ -2240,7 +2297,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByStockBajo(ventasDataSet.tbMovimientosStockDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2253,7 +2310,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual ventasDataSet.tbMovimientosStockDataTable GetDataByStockBajo() {
-            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             ventasDataSet.tbMovimientosStockDataTable dataTable = new ventasDataSet.tbMovimientosStockDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -2264,7 +2321,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByTodosMov(ventasDataSet.tbMovimientosStockDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[7];
+            this.Adapter.SelectCommand = this.CommandCollection[8];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2277,7 +2334,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual ventasDataSet.tbMovimientosStockDataTable GetDataByTodosMov() {
-            this.Adapter.SelectCommand = this.CommandCollection[7];
+            this.Adapter.SelectCommand = this.CommandCollection[8];
             ventasDataSet.tbMovimientosStockDataTable dataTable = new ventasDataSet.tbMovimientosStockDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -2459,7 +2516,7 @@ SELECT Id_Movimiento, Id_Producto, Cantidad, TipoMovimiento, FechaMovimiento, Ob
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertarStock(int Id_Producto, int Cantidad, string TipoMovimiento, string FechaMovimiento, string Observaciones) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[8];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[9];
             command.Parameters[0].Value = ((int)(Id_Producto));
             command.Parameters[1].Value = ((int)(Cantidad));
             if ((TipoMovimiento == null)) {
@@ -2688,16 +2745,15 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "UPDATE tbProducto SET Cantidad = @Cantidad WHERE Id_Producto = @Id_Producto\n";
+            this._commandCollection[1].CommandText = "UPDATE tbProducto SET Cantidad = @Cantidad WHERE Id_Producto = @Id_Producto\r\n";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_Producto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Producto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "DELETE FROM [dbo].[tbProducto] WHERE ([Id_Producto] = @Original_Id_Producto) AND " +
-                "([Codigo] = @Original_Codigo) AND ([Nombre] = @Original_Nombre)";
+            this._commandCollection[2].CommandText = "DELETE FROM [dbo].[tbProducto] WHERE ([Codigo] = @Original_Codigo) AND ([Nombre] " +
+                "= @Original_Nombre)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id_Producto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Producto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Codigo", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -2742,23 +2798,24 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
             this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[10].Connection = this.Connection;
-            this._commandCollection[10].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Cantidad < 10;";
+            this._commandCollection[10].CommandText = "SELECT * \r\nFROM tbProducto \r\nWHERE Cantidad <= @cantidad;";
             this._commandCollection[10].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[11] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[11].Connection = this.Connection;
-            this._commandCollection[11].CommandText = "INSERT INTO [dbo].[tbProducto] ([Codigo], [Nombre], [Cantidad], [Precio], [Catego" +
-                "ria], [Descripcion]) VALUES (@Codigo, @Nombre, @Cantidad, @Precio, @Categoria, @" +
-                "Descripcion);";
+            this._commandCollection[11].CommandText = "INSERT INTO tbProducto\r\n                  (Codigo, Nombre, Precio, Categoria, Des" +
+                "cripcion, Cantidad)\r\nVALUES (@Codigo,@Nombre,@Precio,@Categoria,@Descripcion,@ca" +
+                "ntidad)";
             this._commandCollection[11].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Codigo", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Precio", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 10, 2, "Precio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Categoria", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Categoria", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[12] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[12].Connection = this.Connection;
-            this._commandCollection[12].CommandText = "SELECT Cantidad FROM tbProducto WHERE Id_Producto = @Id_Producto\n";
+            this._commandCollection[12].CommandText = "SELECT Cantidad FROM tbProducto WHERE Id_Producto = @Id_Producto\r\n";
             this._commandCollection[12].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[12].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_Producto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Producto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -3001,8 +3058,9 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByStockBajo(ventasDataSet.tbProductoDataTable dataTable) {
+        public virtual int FillByStockBajo(ventasDataSet.tbProductoDataTable dataTable, int cantidad) {
             this.Adapter.SelectCommand = this.CommandCollection[10];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(cantidad));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -3014,8 +3072,9 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual ventasDataSet.tbProductoDataTable GetDataByStockBajo() {
+        public virtual ventasDataSet.tbProductoDataTable GetDataByStockBajo(int cantidad) {
             this.Adapter.SelectCommand = this.CommandCollection[10];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(cantidad));
             ventasDataSet.tbProductoDataTable dataTable = new ventasDataSet.tbProductoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -3257,20 +3316,19 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
-        public virtual int EliminarProducto(int Original_Id_Producto, string Original_Codigo, string Original_Nombre) {
+        public virtual int EliminarProducto(string Original_Codigo, string Original_Nombre) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            command.Parameters[0].Value = ((int)(Original_Id_Producto));
             if ((Original_Codigo == null)) {
                 throw new global::System.ArgumentNullException("Original_Codigo");
             }
             else {
-                command.Parameters[1].Value = ((string)(Original_Codigo));
+                command.Parameters[0].Value = ((string)(Original_Codigo));
             }
             if ((Original_Nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_Nombre");
             }
             else {
-                command.Parameters[2].Value = ((string)(Original_Nombre));
+                command.Parameters[1].Value = ((string)(Original_Nombre));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3293,7 +3351,7 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertarProducto(string Codigo, string Nombre, int Cantidad, decimal Precio, string Categoria, string Descripcion) {
+        public virtual int InsertarProducto(string Codigo, string Nombre, decimal Precio, string Categoria, string Descripcion, int cantidad) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[11];
             if ((Codigo == null)) {
                 throw new global::System.ArgumentNullException("Codigo");
@@ -3307,20 +3365,20 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
             else {
                 command.Parameters[1].Value = ((string)(Nombre));
             }
-            command.Parameters[2].Value = ((int)(Cantidad));
-            command.Parameters[3].Value = ((decimal)(Precio));
+            command.Parameters[2].Value = ((decimal)(Precio));
             if ((Categoria == null)) {
                 throw new global::System.ArgumentNullException("Categoria");
             }
             else {
-                command.Parameters[4].Value = ((string)(Categoria));
+                command.Parameters[3].Value = ((string)(Categoria));
             }
             if ((Descripcion == null)) {
                 throw new global::System.ArgumentNullException("Descripcion");
             }
             else {
-                command.Parameters[5].Value = ((string)(Descripcion));
+                command.Parameters[4].Value = ((string)(Descripcion));
             }
+            command.Parameters[5].Value = ((int)(cantidad));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

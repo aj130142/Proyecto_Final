@@ -19,7 +19,7 @@ namespace proyecto_final2
 
         private void gestionDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Gestion_porductos gestion = new Gestion_porductos();
+            Gestion_productos gestion = new Gestion_productos();
             gestion.Show();
         }
 
