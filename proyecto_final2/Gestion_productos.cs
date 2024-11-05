@@ -29,7 +29,7 @@ namespace proyecto_final2
         {
 
             
-            this.tbProductoTableAdapter.InsertarProducto(txtCodigo.Text,txtNombre.Text,Convert.ToDecimal(txtPrecio.Text),txtCategoria.Text,txtDescripcion.Text,Convert.ToInt32(txtCantida.Text));
+            this.tbProductoTableAdapter.InsertarProducto(txtCodigo.Text,txtNombre.Text,Convert.ToDecimal(txtPrecio.Text.Replace('.', ',')),txtCategoria.Text,txtDescripcion.Text,Convert.ToInt32(txtCantida.Text));
             txtPrecio.Clear();
             txtCodigo.Clear();
             txtCategoria.Clear();
@@ -42,7 +42,7 @@ namespace proyecto_final2
         {
 
 
-
+            this.tbProductoTableAdapter.UpdateProducto(txtActuNombre.Text,Convert.ToDecimal(txtactuPrecio.Text.Replace('.', ',')), txtactuCategoria.Text,txtactuDescrip.Text,txtactuCodigo.Text);
             txtactuCategoria.Clear();
             txtactuDescrip.Clear();
             txtactuCodigo.Clear();

@@ -277,7 +277,7 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
               <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ventasConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ActualizarCantidadProducto" Modifier="Public" Name="ActualizarCantidadProducto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ActualizarCantidadProducto">
+              <DbSource ConnectionRef="ventasConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ActualizarCantidadProducto" Modifier="Public" Name="ActualizarCantidadProducto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ActualizarCantidadProducto">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE tbProducto SET Cantidad = @Cantidad WHERE Codigo = @Codigo</CommandText>
@@ -288,7 +288,7 @@ SELECT Id_Producto, Codigo, Nombre, Cantidad, Precio, Categoria, Descripcion FRO
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ventasConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EliminarProducto" Modifier="Public" Name="EliminarProducto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="EliminarProducto">
+              <DbSource ConnectionRef="ventasConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EliminarProducto" Modifier="Public" Name="EliminarProducto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="EliminarProducto">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[tbProducto] WHERE ([Codigo] = @Original_Codigo) AND ([Nombre] = @Original_Nombre)</CommandText>
@@ -395,7 +395,7 @@ WHERE Cantidad &lt;= @cantidad;</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ventasConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertarProducto" Modifier="Public" Name="InsertarProducto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertarProducto">
+              <DbSource ConnectionRef="ventasConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertarProducto" Modifier="Public" Name="InsertarProducto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertarProducto">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO tbProducto
@@ -412,7 +412,7 @@ VALUES (@Codigo,@Nombre,@Precio,@Categoria,@Descripcion,@cantidad)</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="ventasConnectionString (Settings)" DbObjectName="dbo.tbProducto" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="ObtenerCantidadProductoPorCodigo" Modifier="Public" Name="ObtenerCantidadProductoPorCodigo" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="ObtenerCantidadProductoPorCodigo">
+              <DbSource ConnectionRef="ventasConnectionString (Settings)" DbObjectName="dbo.tbProducto" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="ObtenerCantidadProductoPorCodigo" Modifier="Public" Name="ObtenerCantidadProductoPorCodigo" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ObtenerCantidadProductoPorCodigo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Cantidad FROM tbProducto WHERE Codigo = @Codigo
@@ -422,6 +422,23 @@ VALUES (@Codigo,@Nombre,@Precio,@Categoria,@Descripcion,@cantidad)</CommandText>
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ventasConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateProducto" Modifier="Public" Name="UpdateProducto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateProducto">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE tbProducto
+SET          Nombre = @Nombre, Precio = @Precio, Categoria = @Categoria, Descripcion = @Descripcion
+WHERE  (Codigo = @Original_Codigo);   
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Nombre" ColumnName="Nombre" DataSourceName="[C:\USERS\CHINO\SOURCE\REPOS\PROYECTO_FINAL2\PROYECTO_FINAL2\REPORTES\VENTAS.MDF].dbo.tbProducto" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@Nombre" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="Nombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Precio" ColumnName="Precio" DataSourceName="[C:\USERS\CHINO\SOURCE\REPOS\PROYECTO_FINAL2\PROYECTO_FINAL2\REPORTES\VENTAS.MDF].dbo.tbProducto" DataTypeServer="decimal(10, 2)" DbType="Decimal" Direction="Input" ParameterName="@Precio" Precision="10" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="Precio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Categoria" ColumnName="Categoria" DataSourceName="[C:\USERS\CHINO\SOURCE\REPOS\PROYECTO_FINAL2\PROYECTO_FINAL2\REPORTES\VENTAS.MDF].dbo.tbProducto" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@Categoria" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="Categoria" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Descripcion" ColumnName="Descripcion" DataSourceName="[C:\USERS\CHINO\SOURCE\REPOS\PROYECTO_FINAL2\PROYECTO_FINAL2\REPORTES\VENTAS.MDF].dbo.tbProducto" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@Descripcion" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="Descripcion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_Codigo" ColumnName="Codigo" DataSourceName="[C:\USERS\CHINO\SOURCE\REPOS\PROYECTO_FINAL2\PROYECTO_FINAL2\REPORTES\VENTAS.MDF].dbo.tbProducto" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@Original_Codigo" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="Codigo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
               </DbSource>
             </Sources>
           </TableAdapter>
@@ -605,8 +622,8 @@ SELECT Id_Venta, id_Producto, Fecha, Ventas, Cantidad, Total FROM tbVentas WHERE
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="tbProducto_tbVentas" msdata:parent="tbProducto" msdata:child="tbVentas" msdata:parentkey="Id_Producto" msdata:childkey="id_Producto" msprop:Generator_UserParentTable="tbProducto" msprop:Generator_UserChildTable="tbVentas" msprop:Generator_RelationVarName="relationtbProducto_tbVentas" msprop:Generator_ChildPropName="GettbVentasRows" msprop:Generator_UserRelationName="tbProducto_tbVentas" msprop:Generator_ParentPropName="tbProductoRow" />
-      <msdata:Relationship name="tbProducto_tbMovimientosStock" msdata:parent="tbProducto" msdata:child="tbMovimientosStock" msdata:parentkey="Id_Producto" msdata:childkey="Id_Producto" msprop:Generator_UserParentTable="tbProducto" msprop:Generator_UserChildTable="tbMovimientosStock" msprop:Generator_RelationVarName="relationtbProducto_tbMovimientosStock" msprop:Generator_ChildPropName="GettbMovimientosStockRows" msprop:Generator_ParentPropName="tbProductoRow" msprop:Generator_UserRelationName="tbProducto_tbMovimientosStock" />
+      <msdata:Relationship name="tbProducto_tbVentas" msdata:parent="tbProducto" msdata:child="tbVentas" msdata:parentkey="Id_Producto" msdata:childkey="id_Producto" msprop:Generator_UserParentTable="tbProducto" msprop:Generator_UserChildTable="tbVentas" msprop:Generator_RelationVarName="relationtbProducto_tbVentas" msprop:Generator_ChildPropName="GettbVentasRows" msprop:Generator_ParentPropName="tbProductoRow" msprop:Generator_UserRelationName="tbProducto_tbVentas" />
+      <msdata:Relationship name="tbProducto_tbMovimientosStock" msdata:parent="tbProducto" msdata:child="tbMovimientosStock" msdata:parentkey="Id_Producto" msdata:childkey="Id_Producto" msprop:Generator_UserParentTable="tbProducto" msprop:Generator_UserChildTable="tbMovimientosStock" msprop:Generator_RelationVarName="relationtbProducto_tbMovimientosStock" msprop:Generator_ChildPropName="GettbMovimientosStockRows" msprop:Generator_UserRelationName="tbProducto_tbMovimientosStock" msprop:Generator_ParentPropName="tbProductoRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
