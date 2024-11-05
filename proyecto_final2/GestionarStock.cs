@@ -22,23 +22,10 @@ namespace proyecto_final2
         private void GestionarStock_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'ventasDataSet.tbMovimientosStock' Puede moverla o quitarla según sea necesario.
-            //this.tbMovimientosStockTableAdapter.Fill(this.ventasDataSet.tbMovimientosStock);
+            this.tbMovimientosStockTableAdapter.Fill(this.ventasDataSet.tbMovimientosStock);
 
-            try
-            {
-                // Obtener los productos de la base de datos y llenar el combo box
-                DataTable productos = tbProductoTableAdapter1.GetData();  // Asegúrate de tener un TableAdapter configurado
-                cBoxIdProducto.DataSource = productos;
-                cBoxIdProducto.DisplayMember = "Codigo";   // Mostrar el campo Código de los productos
-                cBoxIdProducto.ValueMember = "Id_Producto"; // Usar Id_Producto como valor asociado
-
-                // Permitir que el usuario escriba texto
-                cBoxIdProducto.DropDownStyle = ComboBoxStyle.DropDown;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar los productos: " + ex.Message);
-            }
+            // Llenar el ComboBox cuando el formulario se cargue
+            ActualizarComboBoxProductos();
 
         }
 
@@ -48,35 +35,68 @@ namespace proyecto_final2
             {
                 // 1. Obtener los valores ingresados
                 string codigoProducto = cBoxIdProducto.Text;  // Captura el texto escrito en el combo box
-                int cantidad = Convert.ToInt32(txtCantidad.Text);
+                int cantidadMovimiento = Convert.ToInt32(txtCantidad.Text);
                 string tipoMovimiento = cBoxTipoMov.SelectedItem.ToString();
                 DateTime fechaMovimiento = dateTimePicker1.Value;
                 string observaciones = txtObservaciones.Text;
 
                 // 2. Validar datos
-                if (string.IsNullOrWhiteSpace(codigoProducto) || cantidad <= 0 || string.IsNullOrWhiteSpace(tipoMovimiento))
+                if (string.IsNullOrWhiteSpace(codigoProducto) || cantidadMovimiento <= 0 || string.IsNullOrWhiteSpace(tipoMovimiento))
                 {
                     MessageBox.Show("Por favor, complete los campos correctamente.");
                     return;
                 }
 
-                // 3. Insertar datos en la tabla de movimientos de stock
+                // 3. Obtener la cantidad actual del producto desde tbProducto
+                int cantidadActual = (int)tbProductoTableAdapter1.ObtenerCantidadProductoPorCodigo(Convert.ToString(codigoProducto));
+
+                // 4. Validar si es una salida y si hay suficiente stock
+                if (tipoMovimiento == "Salida" && cantidadMovimiento > cantidadActual)
+                {
+                    MessageBox.Show("No hay suficiente stock disponible.");
+                    return;  // No realiza ninguna acción más
+                }
+
+                // 5. Insertar el movimiento en tbMovimientosStock
                 tbMovimientosStockTableAdapter.Insert(
-                    Convert.ToInt32(codigoProducto),  // Aquí asumimos que el código es un número. Ajusta si es necesario.
-                    cantidad,
+                    Convert.ToInt32(codigoProducto),  // Asumimos que Id_Producto es un número. Ajusta si es necesario.
+                    cantidadMovimiento,
                     tipoMovimiento,
                     fechaMovimiento,
                     observaciones
                 );
+                // 6. Actualizar la cantidad en tbProducto según el tipo de movimiento
+                if (tipoMovimiento == "Entrada")
+                {
+                    // Sumar cantidad en caso de entrada
+                    cantidadActual += cantidadMovimiento;
+                }
+                else if (tipoMovimiento == "Salida")
+                {
+                    // Restar cantidad en caso de salida
+                    cantidadActual -= cantidadMovimiento;
 
-                // 4. Actualizar la base de datos y refrescar el dataset
+                    // Validar que no se pueda reducir más de la cantidad disponible
+                    if (cantidadActual < 0)
+                    {
+                        MessageBox.Show("No hay suficiente stock disponible.");
+                        return;
+                    }
+                }
+
+                // 7. Actualizar la cantidad del producto en tbProducto
+                tbProductoTableAdapter1.ActualizarCantidadProducto(cantidadActual, Convert.ToString(codigoProducto));
+
+                // 8. Actualizar la base de datos y refrescar el dataset
                 tbMovimientosStockTableAdapter.Update(ventasDataSet.tbMovimientosStock);
                 ventasDataSet.tbMovimientosStock.AcceptChanges();
 
-                // 5. Confirmación
+                // 9. Actualizar el ComboBox con los nuevos productos
+                ActualizarComboBoxProductos();
+
+                // 10. Confirmación
                 MessageBox.Show("Movimiento registrado con éxito.");
-                // Recargar los datos en el DataGridView para reflejar los cambios
-                this.tbMovimientosStockTableAdapter.Fill(this.ventasDataSet.tbMovimientosStock);
+                RecargarDataGridView();
             }
             catch (Exception ex)
             {
@@ -87,7 +107,35 @@ namespace proyecto_final2
 
         private void cBoxTipoMov_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Text = cBoxTipoMov.Text;
+
         }
+
+        private void ActualizarComboBoxProductos()
+        {
+            try
+            {
+                // Obtener los productos de la base de datos y llenar el combo box
+                DataTable productos = tbProductoTableAdapter1.GetData();  // Asegúrate de tener el TableAdapter configurado
+                cBoxIdProducto.DataSource = productos;
+                cBoxIdProducto.DisplayMember = "Codigo";   // Mostrar el campo Código de los productos
+                cBoxIdProducto.ValueMember = "Codigo"; // Usar Id_Producto como valor asociado
+
+                // Permitir que el usuario escriba texto
+                cBoxIdProducto.DropDownStyle = ComboBoxStyle.DropDown;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los productos: " + ex.Message);
+            }
+        }
+
+        // Método para recargar los datos en el DataGridView
+        private void RecargarDataGridView()
+        {
+            // Vuelve a llenar el DataGridView con los datos más recientes
+            this.tbMovimientosStockTableAdapter.Fill(this.ventasDataSet.tbMovimientosStock);
+            dataGridView1.Refresh();  // Asegúrate de refrescar el DataGridView después de llenar los datos
+        }
+
     }
 }
