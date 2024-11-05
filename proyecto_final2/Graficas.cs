@@ -16,16 +16,28 @@ namespace proyecto_final2
 {
     public partial class Graficas : Form
     {
+        Timer timer;
         public Graficas()
         {
             InitializeComponent();
-            
-            ConfigurarGrafica();
             ConfigurarGraficaTorta();
 
+
+            timer = new Timer();
+            timer.Interval = 100; // Cada 1 segundo
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+
         }
-        
-private void Graficas_Load(object sender, EventArgs e)
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            ConfigurarGrafica();
+            ConfigurarGraficaTorta();
+        }
+
+        private void Graficas_Load(object sender, EventArgs e)
         {
 
         }
@@ -33,15 +45,19 @@ private void Graficas_Load(object sender, EventArgs e)
         private void ConfigurarGrafica()
         {
             this.tbProductoTableAdapter.Fill(this.ventasDataSet1.tbProducto);
-            // Limpia la gráfica de series anteriores
+
+            // Verifica que haya datos
+
+            // Limpia series anteriores
             chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
+            chart1.ChartAreas.Add(new ChartArea());
 
             // Crea y configura la serie de la gráfica de líneas
             Series serieLineas = new Series("Cantidad por Categoría")
             {
-                ChartType = SeriesChartType.Line, // Gráfica de líneas
-                XValueType = ChartValueType.String, // Eje X muestra categorías como texto
-                YValueType = ChartValueType.Int32 // Eje Y muestra cantidades como enteros
+                ChartType = SeriesChartType.Line,
+                IsValueShownAsLabel = true // Muestra valores en los puntos
             };
 
             // Obtén los datos agrupados de tu tabla
@@ -53,6 +69,13 @@ private void Graficas_Load(object sender, EventArgs e)
                     CantidadTotal = g.Sum(p => p.Cantidad)
                 })
                 .ToList();
+
+            // Verifica si hay datos agrupados
+            if (!datosPorCategoria.Any())
+            {
+                MessageBox.Show("No hay datos agrupados para mostrar.");
+                return;
+            }
 
             // Agrega los puntos a la serie
             foreach (var dato in datosPorCategoria)
@@ -63,41 +86,32 @@ private void Graficas_Load(object sender, EventArgs e)
             // Agrega la serie al Chart
             chart1.Series.Add(serieLineas);
 
-            // Configura el eje X
-            chart1.ChartAreas[0].AxisX.Title = "Categoría";
-            chart1.ChartAreas[0].AxisX.Interval = 1; // Asegura que todas las categorías se muestren
-            chart1.ChartAreas[0].AxisX.LabelStyle.IsEndLabelVisible = true;
-
-            // Configura el eje Y
-            chart1.ChartAreas[0].AxisY.Title = "Cantidad";
-            chart1.ChartAreas[0].AxisY.LabelStyle.Format = "N0"; // Formato entero sin decimales
-
-            // Opcional: Configuración de apariencia
-            chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            // Configura la leyenda si no existe
+            if (!chart1.Legends.Any(l => l.Name == "Leyenda"))
+            {
+                Legend legend = new Legend("Leyenda");
+                legend.Docking = Docking.Right; // Posiciona la leyenda
+                chart1.Legends.Add(legend);
+            }
         }
         private void ConfigurarGraficaTorta()
         {
 
-
             // Llenar el DataSet antes de usarlo
             this.tbProductoTableAdapter.Fill(this.ventasDataSet1.tbProducto);
 
-            if (ventasDataSet1.tbProducto.Rows.Count == 0)
-{
-    MessageBox.Show("No hay datos en tbProducto.");
-    return;
-}
 
-            // Limpia series anteriores si existen
+
+            // Limpia series anteriores
             chart2.Series.Clear();
+            chart2.ChartAreas.Clear();
+            chart2.ChartAreas.Add(new ChartArea());
 
             // Crea y configura la serie de la gráfica de torta
             Series serieTorta = new Series("Cantidad por Categoría")
             {
-                ChartType = SeriesChartType.Pie, // Gráfica de torta
-                XValueType = ChartValueType.String, // Eje X muestra categorías como texto
-                YValueType = ChartValueType.Int32 // Eje Y muestra cantidades como enteros
+                ChartType = SeriesChartType.Pie,
+                IsValueShownAsLabel = true // Muestra valores en las rebanadas
             };
 
             // Obtén los datos agrupados de tu tabla
@@ -110,25 +124,34 @@ private void Graficas_Load(object sender, EventArgs e)
                 })
                 .ToList();
 
-            // Agrega los puntos a la serie (cada punto es una "rebanada" de la torta)
+            // Verifica si hay datos agrupados
+            if (!datosPorCategoria.Any())
+            {
+                MessageBox.Show("No hay datos agrupados para mostrar.");
+                return;
+            }
+
+            // Agrega los puntos a la serie
             foreach (var dato in datosPorCategoria)
             {
-                DataPoint punto = new DataPoint
-                {
-                    AxisLabel = dato.Categoria,
-                    YValues = new double[] { dato.CantidadTotal }
-                };
-                serieTorta.Points.Add(punto);
+                serieTorta.Points.AddXY(dato.Categoria, dato.CantidadTotal);
             }
 
             // Agrega la serie al Chart
             chart2.Series.Add(serieTorta);
 
-            // Configuración adicional para la gráfica de torta
-            chart2.Legends.Add(new Legend("Leyenda"));
-            serieTorta.IsValueShownAsLabel = true; // Muestra valores en las rebanadas
-            serieTorta.LabelFormat = "#,##0"; // Formato de etiqueta sin decimales
-        }
+            if (!chart1.Legends.Any(l => l.Name == "Leyenda"))
+            {
+                Legend legend = new Legend("Leyenda");
+                legend.Docking = Docking.Right; // Posiciona la leyenda
+                chart1.Legends.Add(legend);
+            }
 
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            timer.Stop(); // Detiene el Timer
+            base.OnFormClosing(e);
+        }
     }
 }
