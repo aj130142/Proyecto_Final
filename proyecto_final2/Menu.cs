@@ -45,5 +45,11 @@ namespace proyecto_final2
             GestionarStock gestionarStock = new GestionarStock();
             gestionarStock.Show();
         }
+
+        private void graficasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Graficas graficas = new Graficas();
+            graficas.Show();
+        }
     }
 }
